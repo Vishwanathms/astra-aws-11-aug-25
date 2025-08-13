@@ -1,7 +1,13 @@
 #!/bin/bash
 
+# Change the below 
+# 1. Subnet value 
+# 2. Sg value 
+# 3. ec2 image id
+# 4. ec2 key_name
+# 5. ec2 name value
 SUBNET_ID=$(aws ec2 describe-subnets \
-  --filters "Name=tag:Name,Values=32-sub1" \
+  --filters "Name=tag:Name,Values=32-sub1" \ 
   --query "Subnets[0].SubnetId" \
   --output text)
 

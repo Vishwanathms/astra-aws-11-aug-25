@@ -15,3 +15,14 @@ Note: -- Replace <VPC-ID> to your vpc id, and also change the CIDR block accordi
 ```
 aws ec2 create-subnet --vpc-id <VPC-ID> --cidr-block 192.168.2.0/24 --availability-zone us-east-1c --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=32-sub03},{Key=Owner,Value=vishwa},{Key=Env,Value=Dev}]'
 ```
+
+* Delete ec2 using the name of it
+```
+INSTANCE_ID=$(aws ec2 describe-instances \
+  --filters "Name=tag:Name,Values=32-vm02" "Name=instance-state-name,Values=running,stopped" \
+  --query "Reservations[*].Instances[*].InstanceId" \
+  --output text)
+
+
+aws ec2 terminate-instances --instance-ids $INSTANCE_ID
+```
