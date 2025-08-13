@@ -10,4 +10,4 @@ systemctl enable httpd
 systemctl start httpd
 
 # Optional: Add a sample index page
-echo "<h1>Hello from Amazon Linux 2023 Apache Server!</h1>" > /var/www/html/index.html
+echo "<h1>Hello from Amazon Linux 2023 Apache Server</h1>" > /var/www/html/index.html
