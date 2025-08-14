@@ -38,6 +38,11 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 ```
 
+* finally run the python code 
+```
+nohup python3 app.py > app.log 2>&1 &
+```
+Note , it could be python or python3 
 
 ## Redis setup.
 * Amazon Linux 2023 replaced amazon-linux-extras with dnf repos, and Redis is often found in the epel-like packages.
@@ -105,6 +110,7 @@ sudo systemctl status redis
 ```
 
 ### **4️⃣ Test from another machine**
+* can be done on redis machine (Optional)
 
 ```bash
 redis-cli -h <EC2-Public-IP> -p 6379 ping
