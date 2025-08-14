@@ -1,4 +1,23 @@
 ## Python Code
+
+* install python on the centos and create this file in the home directory.
+```
+sudo dnf update -y
+
+sudo dnf install -y python3 python3-pip python3-virtualenv
+python3 --version
+pip3 --version
+```
+
+* Create and use a virtual environment
+```
+python3 -m venv myenv
+source myenv/bin/activate
+pip install flask redis
+
+```
+* create an "app.py" file and copy the below code.
+Note: Make sure to change the host value instead of 'loclahost' to "private ip of redis ec2"
 ```
 import redis
 from flask import Flask
@@ -18,22 +37,7 @@ def index():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 ```
-* install python on the centos and create this file in the home directory.
-```
-sudo dnf update -y
 
-sudo dnf install -y python3 python3-pip python3-virtualenv
-python3 --version
-pip3 --version
-```
-
-* Create and use a virtual environment
-```
-python3 -m venv myenv
-source myenv/bin/activate
-pip install flask redis
-
-```
 
 ## Redis setup.
 * Amazon Linux 2023 replaced amazon-linux-extras with dnf repos, and Redis is often found in the epel-like packages.
