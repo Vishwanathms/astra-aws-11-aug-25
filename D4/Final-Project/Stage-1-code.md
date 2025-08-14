@@ -26,7 +26,7 @@ app = Flask(__name__)
 
 # Connect to Redis
 # Change host if Redis is on another machine
-r = redis.Redis(host='localhost', port=6379, db=0)
+r = redis.Redis(host='172.31.19.169', port=6379, db=0)
 
 @app.route('/')
 def index():
@@ -50,13 +50,13 @@ dnf search redis
 ```
 * If you see something like redis6 or redis7, install it:
 ```
-sudo dnf install -y redis
+sudo dnf install -y redis6
 ```
 * Enable & start:
 ```
-sudo systemctl enable redis
-sudo systemctl start redis
-sudo systemctl status redis
+sudo systemctl enable redis6
+sudo systemctl start redis6
+sudo systemctl status redis6
 
 ```
 
