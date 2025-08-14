@@ -62,7 +62,11 @@ sudo systemctl status redis
 
 ## Open the security group to access redis 
 * on the exsisting your security group open
+  * redis details
     * port -- 6379
     * source -- 192.168.0.0/20
     * type -- custom tcp
-
+  * Python web server  details
+    * port -- 5000
+    * source -- 0.0.0.0/0
+    * type -- All traffic
