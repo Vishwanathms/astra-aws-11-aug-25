@@ -72,7 +72,7 @@ If you want your EC2 instance’s **eth0** IP (private/public) to be accessible,
 The Redis config file is usually in `/etc/redis/redis.conf` or `/etc/redis.conf`.
 
 ```bash
-sudo vi /etc/redis/redis.conf
+sudo vi /etc/redis6/redis6.conf
 ```
 
 * Find this line:
