@@ -60,6 +60,63 @@ sudo systemctl status redis6
 
 ```
 
+By default, Redis binds only to `127.0.0.1` (loopback) for security.
+If you want your EC2 instance’s **eth0** IP (private/public) to be accessible, you have to update the Redis config and firewall rules.
+
+---
+
+## **Steps to Make Redis Listen on All Interfaces in Amazon Linux 2023**
+
+### **1️⃣ Edit Redis config**
+
+The Redis config file is usually in `/etc/redis/redis.conf` or `/etc/redis.conf`.
+
+```bash
+sudo vi /etc/redis/redis.conf
+```
+
+* Find this line:
+
+```
+bind 127.0.0.1 ::1
+```
+
+* Change it to:
+
+```
+bind 0.0.0.0
+```
+
+* Also make sure:
+
+```
+protected-mode no
+```
+
+(If you keep `protected-mode yes`, Redis will still block external connections unless explicitly whitelisted.)
+
+---
+
+### **2️⃣ Restart Redis**
+
+```bash
+sudo systemctl restart redis
+sudo systemctl status redis
+```
+
+### **4️⃣ Test from another machine**
+
+```bash
+redis-cli -h <EC2-Public-IP> -p 6379 ping
+```
+
+Should return:
+
+```
+PONG
+```
+
+
 ## Open the security group to access redis 
 * on the exsisting your security group open
   * redis details
